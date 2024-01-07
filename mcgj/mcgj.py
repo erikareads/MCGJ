@@ -175,7 +175,7 @@ def render_session(session_id):
         return render_template("session_detail.html", session=session, unplayed=unplayed_tracks, played=played_tracks, is_driving=is_driving, next_up=next_up)
 
     else:
-        return redirect(url_for('auth.session_auth_recurse_redirect', session_id=session_id))
+        return redirect(url_for('auth.session_auth_oauth_redirect', session_id=session_id))
 
 @bp.route("/sessions/latest")
 def renderLatestSession():
@@ -187,7 +187,7 @@ def renderLatestSession():
     if current_user.is_authenticated:
         return redirect(url_for('mcgj.render_session', session_id=session_id))
     else:
-        return redirect(url_for('auth.session_auth_recurse_redirect', session_id=session_id))
+        return redirect(url_for('auth.session_auth_oauth_redirect', session_id=session_id))
 
 @bp.route("/sessions/<session_id>/drive")
 @login_required
@@ -399,7 +399,7 @@ def insert_track():
 def insert_session():
     """Create a new session"""
     sess = Session()
-    sess.name = "Recurse MCG {}".format(datetime.date.today().isoformat())
+    sess.name = "MCG {}".format(datetime.date.today().isoformat())
     sess.date = datetime.date.today()
     sess.current_round = 1
     sess.insert()

@@ -31,7 +31,7 @@ CREATE TABLE tracks (
 );
 
 CREATE TABLE users (
-    id INTEGER PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     create_date TIMESTAMP NOT NULL,
     update_date TIMESTAMP,
     name TEXT,

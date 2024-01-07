@@ -96,7 +96,7 @@ class Track(SQLite3BackedObject):
 
     def session_url(self):
         id = self.session_id
-        return "https://mcg.recurse.com/sessions/{}".format(id)
+        return "{}/sessions/{}".format(os.getenv("HOST"), id)
 
 
 class Session(SQLite3BackedObject):
